@@ -1,0 +1,1 @@
+# test-self-update-on-windows
