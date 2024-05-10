@@ -12,6 +12,6 @@ func main() {
 }
 
 func core() error {
-	fmt.Println("main-2")
+	fmt.Println("bar")
 	return nil
 }

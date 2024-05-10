@@ -18,11 +18,11 @@ func main() {
 func core() error {
 	fs := afero.NewOsFs()
 
-	if err := Copy(fs, "main", "main-2"); err != nil {
+	if err := Copy(fs, "foo.exe", "bar.exe"); err != nil {
 		return err
 	}
 
-	// if err := fs.Rename("main-2", "main.bak"); err != nil {
+	// if err := fs.Rename("foo", "foo.bak"); err != nil {
 	// 	return err
 	// }
 	return nil
