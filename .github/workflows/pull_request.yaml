@@ -1,0 +1,21 @@
+---
+name: pull_request
+on: pull_request
+jobs:
+  test:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+      - run: go build -o foo.exe ./cmd/foo/main.go
+      - run: go build -o bar.exe ./cmd/bar/main.go
+      - run: ls -l
+        shell: bash
+      - run: ./foo
+      - run: ls -l
+        shell: bash
+      - run: ./foo
+      - run: ls -l
+        shell: bash
