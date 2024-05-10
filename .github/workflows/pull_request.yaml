@@ -10,5 +10,5 @@ jobs:
         with:
           go-version-file: go.mod
       - run: go build -o main ./main.go
-      - run: go build -o main ./main-2.go
+      - run: go build -o main-2 ./main-2.go
       - run: ./main
