@@ -12,3 +12,4 @@ jobs:
       - run: go build -o main ./main.go
       - run: go build -o main-2 ./main-2.go
       - run: ./main
+      - run: ./main
