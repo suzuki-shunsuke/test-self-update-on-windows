@@ -33,7 +33,10 @@ const (
 )
 
 func Copy(fs afero.Fs, dest, src string) error {
-	dst, err := fs.OpenFile(dest, os.O_RDWR|os.O_TRUNC, executableFilePermission) //nolint:nosnakecase
+	if err := fs.Rename(dest, dest+".bak"); err != nil {
+		return fmt.Errorf("rename a file: %w", err)
+	}
+	dst, err := fs.OpenFile(dest, os.O_RDWR|os.O_CREATE|os.O_TRUNC, executableFilePermission) //nolint:nosnakecase
 	if err != nil {
 		return fmt.Errorf("create a file: %w", err)
 	}
@@ -47,6 +50,8 @@ func Copy(fs afero.Fs, dest, src string) error {
 	if _, err := io.Copy(dst, srcFile); err != nil {
 		return fmt.Errorf("copy a file: %w", err)
 	}
-
+	if err := fs.Remove(dest + ".bak"); err != nil {
+		return fmt.Errorf("reamove a file: %w", err)
+	}
 	return nil
 }
