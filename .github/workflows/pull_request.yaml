@@ -13,9 +13,9 @@ jobs:
       - run: go build -o bar.exe ./cmd/bar/main.go
       - run: ls -l
         shell: bash
-      - run: ./main
+      - run: ./foo
       - run: ls -l
         shell: bash
-      - run: ./main
+      - run: ./foo
       - run: ls -l
         shell: bash
