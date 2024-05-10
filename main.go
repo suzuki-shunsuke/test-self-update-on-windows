@@ -43,6 +43,7 @@ func Copy(fs afero.Fs, dest, src string) error {
 		return fmt.Errorf("open a file: %w", err)
 	}
 	defer srcFile.Close()
+	fmt.Println("copying")
 	if _, err := io.Copy(dst, srcFile); err != nil {
 		return fmt.Errorf("copy a file: %w", err)
 	}
